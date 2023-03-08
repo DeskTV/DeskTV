@@ -8,8 +8,8 @@ I made this as an alternative to FireTV, AndroidTV, AppleTV, GoogleTV etc. It sh
 Currently, there are following features planned and implemented:
 | Feature               | Status |
 |-----------------------|--------|
-| Controller support    | WIP    |
-| Remote App support    | WIP    |
+| Controller support    | 🚧     |
+| Remote App support    | 🚧     |
 | Full keyboard support | :x:    |
 | App store             | :x:    |
-| Home UI               | WIP    |
+| Home UI               | 🚧     |
