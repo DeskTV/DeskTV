@@ -14,9 +14,8 @@ Currently, there are following features planned and implemented:
 | App store             | :x:    |
 | Home UI               | 🚧     |
 
-## Which apps are there, and which apps are planned?
-Sadly, there currently aren't any apps. As it would be possible to run any websites directly in the program, they have to be recoded to support our input system. If you want to port a website, feel free to do so! You can find tutorials on how to port websites in the wiki.
-
+## Which apps are there?
+Currently, I'm only working to get the YouTube TV app running. As it would be possible to run any websites directly in the program, they have to be recoded to support our input system. If you want to port a website, feel free to do so! You can find instructions on how to port websites in the wiki.
 ## How can I make a own app?
 If you are the owner of a website and want to port it for DeskTV, you will also find a tutorial in the wiki.
 
