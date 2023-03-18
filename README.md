@@ -25,6 +25,9 @@ There is the following list of apps at the moment:
 ## How can I make a own app?
 If you are the owner of a website and want to port it for DeskTV, you will also find a tutorial in the wiki.
 
+## I need help, where can I ask?
+Ask on the Discord: https://discord.gg/ChszKqNu9z
+
 ## How can I help support this project?
 If you want to support this project, you can collaborate to it. Fork the project and make changes to the code, and create a pull request. Or, you can port/create websites for DeskTV.
 We currently don't accept donations of any kinds, as this is a freetime project which does not generates any costs
