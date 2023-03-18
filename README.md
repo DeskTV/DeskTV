@@ -19,7 +19,7 @@ There is the following list of apps at the moment:
 | App           | Author | Pre-installed | Notice                                                             |
 |---------------|--------|---------------|--------------------------------------------------------------------|
 | YouTube on TV | Google | Yes           | No remote support. Can be controlled through YouTube App on mobile |
-| App Store.    | DeskTV | Yes           | App not finished yet.                                              |
+| App Store     | DeskTV | Yes           | App not finished yet.                                              |
 | IPTV          | DeskTV | No            | WIP, can't be installed yet. Could be made a preinstalled app      |
 
 ## How can I make a own app?
