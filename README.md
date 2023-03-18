@@ -15,7 +15,13 @@ Currently, there are following features planned and implemented:
 | Home UI               | 🚧     |
 
 ## Which apps are there?
-Currently, I'm only working to get the YouTube TV app running. As it would be possible to run any websites directly in the program, they have to be recoded to support our input system. If you want to port a website, feel free to do so! You can find instructions on how to port websites in the wiki.
+There is the following list of apps at the moment:
+| App           | Author | Pre-installed | Notice                                                             |
+|---------------|--------|---------------|--------------------------------------------------------------------|
+| YouTube on TV | Google | Yes           | No remote support. Can be controlled through YouTube App on mobile |
+| App Store.    | DeskTV | Yes           | App not finished yet.                                              |
+| IPTV          | DeskTV | No            | WIP, can't be installed yet. Could be made a preinstalled app      |
+
 ## How can I make a own app?
 If you are the owner of a website and want to port it for DeskTV, you will also find a tutorial in the wiki.
 
