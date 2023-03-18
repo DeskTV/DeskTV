@@ -6,13 +6,13 @@ I made this as an alternative to FireTV, AndroidTV, AppleTV, GoogleTV etc. It sh
 
 ## What features does it have?
 Currently, there are following features planned and implemented:
-| Feature               | Status |
-|-----------------------|--------|
-| Controller support    | 🚧     |
-| Remote App support    | 🚧     |
-| Full keyboard support | :x:    |
-| App store             | :x:    |
-| Home UI               | 🚧     |
+| Feature               | Status                                                                       |
+|-----------------------|------------------------------------------------------------------------------|
+| Controller support    | :construction: (App has to support DeskTV inputs instead of keyboard events) |
+| Remote App support    | :construction: (App has to support DeskTV inputs instead of keyboard events) |
+| Full keyboard support | :x:                                                                          |
+| App store             | :x:                                                                          |
+| Home UI               | :construction:                                                               |
 
 ## Which apps are there?
 There is the following list of apps at the moment:
