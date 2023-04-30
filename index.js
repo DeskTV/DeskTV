@@ -5,6 +5,7 @@ const dcClient = require('discord-rich-presence')('1087387430191112252');
 const fs = require('fs');
 const { download } = require('electron-dl');
 const decompress = require("decompress");
+const {keyboard, Key} = require("@nut-tree/nut-js");
 
 let appList = [];
 let activeApp = null;
@@ -125,13 +126,21 @@ async function createWindow() {
     
             remotewin.loadURL(`file://${__dirname}/www/qrwindow.html?key=${json.value}`);
         } else if (json.type == "key") {
-                 if (json.value == "up") {BrowserWindow.getFocusedWindow().webContents.executeJavaScript("window.dispatchEvent(new Event('dtv-up'))")}
-            else if (json.value == "down") {BrowserWindow.getFocusedWindow().webContents.executeJavaScript("window.dispatchEvent(new Event('dtv-down'))")}
-            else if (json.value == "left") {BrowserWindow.getFocusedWindow().webContents.executeJavaScript("window.dispatchEvent(new Event('dtv-left'))")}
-            else if (json.value == "right") {BrowserWindow.getFocusedWindow().webContents.executeJavaScript("window.dispatchEvent(new Event('dtv-right'))")}
+            console.log(json.value);
+                 if (json.value == "up") {keyboard.type(Key.Up)}
+            else if (json.value == "down") {keyboard.type(Key.Down)}
+            else if (json.value == "left") {keyboard.type(Key.Left)}
+            else if (json.value == "right") {keyboard.type(Key.Right)}
+            else if (json.value == "enter") {keyboard.type(Key.Enter)}
+            else if (json.value == "back") {keyboard.type(Key.Escape)}
+            else if (json.value == "home") {
+                if (appwin != null) {
+                    appwin.close();
+                }
+            }
             else if (json.value == "vlm-up") {
                 if (devInfo.vol < 95) {
-                    loudness.setVolume(vol + 5);
+                    loudness.setVolume(devInfo.vol + 5);
                     devInfo.vol += 5;
                 } else {
                     loudness.setVolume(100);
@@ -140,7 +149,7 @@ async function createWindow() {
             }
             else if (json.value == "vlm-down") {
                 if (devInfo.vol > 5) {
-                    loudness.setVolume(vol - 5);
+                    loudness.setVolume(devInfo.vol - 5);
                     devInfo.vol -= 5;
                 } else {
                     loudness.setVolume(0);
@@ -152,7 +161,7 @@ async function createWindow() {
         } else if (json.type == "connection") {
             remotewin.close();
     
-            socket.send({"receiver": json.value, "content": JSON.stringify({"type": "info", "value": {"name": deviceName}})});
+            socket.send({"receiver": json.value, "content": JSON.stringify({"type": "info", "value": {"name": devInfo.deviceName}})});
         }
     });
 }
@@ -265,8 +274,7 @@ ipcMain.on('startAuthenticationDiscord', async (event, appName) => {
     }
 });
 
-app.on('ready', async () => {
-    
+app.on('ready', async () => {    
     // Change the User Agent so YouTube can load
     const filter = {
         urls: ['https://*.youtube.com/*', 'http://*.sodianetwork.de/*']
