@@ -268,8 +268,6 @@ ipcMain.on('downloadApp', async (event, appName) => {
 
 ipcMain.on('startAuthenticationDiscord', async (event, appName) => {
     if (event.sender.id = win.id) {
-        
-        
         win.loadURL("https://discord.com/api/oauth2/authorize?client_id=1087387430191112252&redirect_uri=http%3A%2F%2Flocalhost%3A5836%2Foauth&response_type=code&scope=identify%20email");
     }
 });
@@ -277,19 +275,12 @@ ipcMain.on('startAuthenticationDiscord', async (event, appName) => {
 app.on('ready', async () => {    
     // Change the User Agent so YouTube can load
     const filter = {
-        urls: ['https://*.youtube.com/*', 'http://*.sodianetwork.de/*']
+        urls: ['https://*.youtube.com/*', 'http://*.sodianetwork.de/*', 'https://*.netflix.com/*']
     }
       
     session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback) => {
         details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (SMART-TV; Linux; Tizen 5.0) AppleWebKit/538.1 (KHTML, like Gecko) Version/5.0 NativeTVAds Safari/538.1 DeskTV/1.0';
         callback({ requestHeaders: details.requestHeaders });
-    });
-
-    // Manipulate the YouTube script, so the app can use the deviceName instead of YouTube on TV for connections
-    session.defaultSession.webRequest.onBeforeRequest({urls: ['https://www.youtube.com/s/_/kabuki/_/js/k=kabuki.base.en_US.dJ0uVMBiDgw.es5.O/am=SAQQgIgABA/d=1/excm=main/rs=ANjRhVm05bNxKsA1bgz-ZuE3gD6QHR4Iug/m=base']}, function(details, callback) {
-        callback({
-            redirectURL: 'https://sodianetwork.de/yt_manipulate.php?name=' + encodeURIComponent(devInfo.deviceName)
-        });
     });
     
     createWindow();
