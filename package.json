@@ -1,0 +1,24 @@
+{
+  "name": "desk-tv",
+  "version": "1.0.0-alpha.1",
+  "description": "A FireTV, AndroidTV, AppleTV etc. alternative as a standalone programm for diverse Desktop OSes written in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Florian Reinten",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^24.1.2",
+    "electron-builder": "^23.6.0"
+  },
+  "dependencies": {
+    "decompress": "^4.2.1",
+    "discord-rich-presence": "^0.0.8",
+    "electron-dl": "^3.5.0",
+    "loudness": "^0.4.1",
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1",
+    "ws": "^8.12.1"
+  }
+}
