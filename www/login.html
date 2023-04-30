@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeskTV - Login</title>
+    <script>
+        const { ipcRenderer } = require("electron");
+
+        const downEvent = new Event("dtv-down");
+        const leftEvent = new Event("dtv-left");
+        const upEvent = new Event("dtv-up");
+        const rightEvent = new Event("dtv-right");
+        const enterEvent = new Event("dtv-enter");
+
+        // Fire the eventhandlers for controller inputs
+        Controller.search();
+        window.addEventListener('gc.button.press', function(event) {
+            if (event.detail.name == "DPAD_LEFT") {
+                window.dispatchEvent(leftEvent);
+            } else if (event.detail.name == "DPAD_RIGHT") {
+                window.dispatchEvent(rightEvent);
+            } else if (event.detail.name == "DPAD_UP") {
+                window.dispatchEvent(upEvent);
+            } else if (event.detail.name == "DPAD_DOWN") {
+                window.dispatchEvent(downEvent);
+            }
+        }, false);
+
+        // Fire the eventhandlers for keyboard inputs
+        window.addEventListener('keydown', function(event) {
+            // Skip the Event, if a input-field is selected
+            if (!false) {
+                if (event.code == "ArrowUp") {
+                    window.dispatchEvent(upEvent);
+                } else if (event.code == "ArrowDown") {
+                    window.dispatchEvent(downEvent);
+                } else if (event.code == "ArrowLeft") {
+                    window.dispatchEvent(leftEvent);
+                } else if (event.code == "ArrowRight") {
+                    window.dispatchEvent(rightEvent);
+                } else if (event.code == "Enter") {
+                    window.dispatchEvent(enterEvent);
+                }
+            }
+        }, false);
+
+        window.addEventListener('dtv-up', function(event) {
+            console.log("Received up-input");
+        }, false);
+
+        window.addEventListener('dtv-down', function(event) {
+            console.log("Received down-input");
+            
+        }, false);
+
+        window.addEventListener('dtv-enter', function(event) {
+            ipcRenderer.send(document.querySelector(".selected").attributes['execution']);
+        }, false);
+    </script>
+    <style>
+        body {
+            background-color: black;
+            color: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-left">
+        <h1>DeskTV - Smart TV on your PC</h1>
+        <p>DeskTV is a open source alternative to TVOSes like FireTV, GoogleTV... <br>But, to make soure there is no abuse of our systems, you need to login with your Discord account.</p>
+    </div>
+    <div id="login-right">
+        <button id="login-discord" onclick="ipcRenderer.send('startAuthenticationDiscord','')">Login with Discord</button>
+    </div>
+</body>
+</html>
