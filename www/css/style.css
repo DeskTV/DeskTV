@@ -1,0 +1,51 @@
+body {
+    background-color: black;
+    color: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.items {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    width: 100vw;
+    max-height: 300px;
+}
+
+img {
+    display: inline-block;
+    width: 400px;
+    height: 200px;
+    margin: 10px;
+}
+
+.selected {
+    border: 5px solid white;
+    margin: 5px;
+}
+
+#qrscreen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#qrscreen * {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#qrscreen h1 {
+    font-size: 40px;
+}
+
+#qrscreen p {
+    font-size: 24px;
+}
