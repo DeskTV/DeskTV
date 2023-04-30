@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeskTV</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+    <script src="js/QRCode.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+    <script src="js/DeskTV.js"></script>
+    <script src="js/preload.js"></script>
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        const downEvent = new Event("dtv-down");
+        const leftEvent = new Event("dtv-left");
+        const upEvent = new Event("dtv-up");
+        const rightEvent = new Event("dtv-right");
+        const enterEvent = new Event("dtv-enter");
+
+        // Fire the eventhandlers for controller inputs
+        Controller.search();
+        window.addEventListener('gc.button.press', function(event) {
+            if (event.detail.name == "DPAD_LEFT") {
+                window.dispatchEvent(leftEvent);
+            } else if (event.detail.name == "DPAD_RIGHT") {
+                window.dispatchEvent(rightEvent);
+            } else if (event.detail.name == "DPAD_UP") {
+                window.dispatchEvent(upEvent);
+            } else if (event.detail.name == "DPAD_DOWN") {
+                window.dispatchEvent(downEvent);
+            }
+        }, false);
+
+        // Fire the eventhandlers for keyboard inputs
+        window.addEventListener('keydown', function(event) {
+            // Skip the Event, if a input-field is selected
+            if (!false) {
+                if (event.code == "ArrowUp") {
+                    window.dispatchEvent(upEvent);
+                } else if (event.code == "ArrowDown") {
+                    window.dispatchEvent(downEvent);
+                } else if (event.code == "ArrowLeft") {
+                    window.dispatchEvent(leftEvent);
+                } else if (event.code == "ArrowRight") {
+                    window.dispatchEvent(rightEvent);
+                }
+            }
+        }, false);
+        
+        function selectElement() {
+            selectedElement.classList.remove("selected");
+            selectedElement = document.getElementById(selectedRow + ":" + selectedIndex);
+            selectedElement.classList.add("selected");
+            selectedElement.scrollIntoView({
+                inline: "start",
+                block: "center"
+            });
+        }
+
+        window.addEventListener('dtv-up', function(event) {
+            console.log("Received up-input");
+            if (selectedRow > 1) {
+                selectedRow--;
+                selectElement();
+            }
+        }, false);
+
+        window.addEventListener('dtv-down', function(event) {
+            console.log("Received down-input");
+            if (selectedRow < 2) {
+                selectedRow++;
+                selectElement();
+            }
+        }, false);
+
+        window.addEventListener('dtv-left', function(event) {
+            console.log("Received left-input");
+            if (selectedIndex > 1) {
+                selectedIndex--;
+                selectElement();
+            }
+        }, false);
+
+        window.addEventListener('dtv-right', function(event) {
+            console.log("Received right-input");
+            if (selectedIndex < 6) {
+                selectedIndex++;
+                selectElement();
+            }
+        }, false);
+
+        window.addEventListener('dtv-enter', function(event) {
+            console.log("Received enter-input");
+        }, false);
+
+        var selectedRow = 2;
+        var selectedIndex = 1;
+    </script>
+</head>
+<body>
+    <div id="container">
+        <h1>DeskTV</h1><h2>Apps</h2>
+        <div class="items">
+            
+        </div>
+    </div>
+    <script>
+        function loadApps(array) {
+            console.log(array);
+            array.forEach(element => {
+                console.log(element);
+            });
+        }
+
+        let selectedElement = document.getElementById("2:1");
+        selectedElement.classList.add("selected");
+    </script>
+</body>
+</html>
