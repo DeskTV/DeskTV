@@ -6,19 +6,19 @@ I made this as an alternative to FireTV, AndroidTV, AppleTV, GoogleTV etc. It sh
 
 ## What features does it have?
 Currently, there are following features planned and implemented:
-| Feature               | Status                                                                       |
-|-----------------------|------------------------------------------------------------------------------|
-| Controller support    | :construction: (App has to support DeskTV inputs instead of keyboard events) |
-| Remote App support    | :construction: (App has to support DeskTV inputs instead of keyboard events) |
-| Full keyboard support | :x:                                                                          |
-| App store             | :x:                                                                          |
-| Home UI               | :construction:                                                               |
+| Feature               | Status         |
+|-----------------------|----------------|
+| Controller support    | :construction: |
+| Remote App support    | :construction: |
+| Full keyboard support | :x:            |
+| App store             | :x:            |
+| Home UI               | :construction: |
 
 ## Which apps are there?
 There is the following list of apps at the moment:
 | App           | Author | Pre-installed | More info                                                          |
 |---------------|--------|---------------|--------------------------------------------------------------------|
-| YouTube on TV | Google | Yes           | No remote support. Can be controlled through YouTube App on mobile |
+| YouTube on TV | Google | Yes           | Finished. YouTube patched a function, so custom name not working.  |
 | App Store     | DeskTV | Yes           | App not finished yet.                                              |
 | IPTV          | DeskTV | No            | WIP, can't be installed yet. Could be made a preinstalled app      |
 | ScreenPlay    | DeskTV | No            | WIP, can't be installed yet. You need a phone to play              |
